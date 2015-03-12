@@ -5,6 +5,7 @@
         .tooltipStyle {
             max-width: 400px;
         }
+
         .glowing-border {
             outline: none !important;
             border-color: #8dff71 !important;
