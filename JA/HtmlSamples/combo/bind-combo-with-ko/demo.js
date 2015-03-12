@@ -47,9 +47,9 @@ $(function () {
             		};
             		self.index(self.index() + 1);
             		self.actors.push(newActObj);
+            		self.selectedActor([newActObj.id]);
+            		self.newActor("");
                 }
-            	self.selectedActor([newActObj.id]);
-                self.newActor("");
             }
 
             this.removeActor = function () {
@@ -99,7 +99,7 @@ $(function () {
                     labelText: $(this).val(),
                     centerLabel: true,
                     width: 80,
-                    height: 26
+                    height: 32
                 });
             });
         });
