@@ -40,7 +40,7 @@ $(function () {
             this.newActor = ko.observable("");
             this.addActor = function () {
             	var newActObj;
-            	if (!self.findActorRecord(self.newActor())) {
+            	if (self.newActor() !== "" && !self.findActorRecord(self.newActor())) {
             		newActObj = {
             			id: "new" + self.index(),
             			name: self.newActor()
