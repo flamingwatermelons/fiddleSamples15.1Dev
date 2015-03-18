@@ -35,7 +35,7 @@ $.ig.loader({
                         { headerText: "製品番号", key: "ProductNumber", dataType: "number", width: "200px" },
                         { headerText: "在庫", key: "InStock", dataType: "bool", width: "150px" },
                         { headerText: "数量", key: "Quantity", dataType: "number", width: "150px" },
-                        { headerText: "仕入先の web サイト", key: "VendorWebsite", width: "220px", template: '<a href="${VendorWebsite}">${VendorWebsite}</a>' },
+                        { headerText: "仕入先の web サイト", key: "VendorWebsite", width: "220px", template: '<a href="${VendorWebsite}">${VendorWebsite}</a>' }
                     ],
                     dataSource: data,
                         width: "100%",
@@ -51,7 +51,7 @@ $.ig.loader({
                            name: "Paging",
                            type: "local",
                            pageSize: 10
-                       },
+                       }
                     ]
                 });
             });
