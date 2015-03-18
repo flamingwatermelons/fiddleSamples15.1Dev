@@ -60,7 +60,7 @@ $.ig.loader({
 		function exportGrid() {
 			$.ig.GridExcelExporter.export($("#grid"),
 				{
-				    fileName: "excel",
+				    fileName: "igGrid",
 				    gridFeatureOptions: { "sorting": "applied", "filtering": "applied", paging: "currentPage", "summaries": "applied" },
 				},
                 {
@@ -81,7 +81,7 @@ $.ig.loader({
 
                         if (args.columnKey == 'VendorWebsite') {
                             var xlRow = args.xlRow;
-                            xlRow.cells(args.columnIndex).applyFormula('=HYPERLINK("' + args.cellValue + '","' + args.cellValue + '")');
+                            xlRow.cells(args.columnIndex).applyFormula('=HYPERLINK("' + args.cellValue + '")');
                         }
                     },
 					rowExported: function (e, args) {
