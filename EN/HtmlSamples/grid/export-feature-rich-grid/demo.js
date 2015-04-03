@@ -61,14 +61,14 @@ $.ig.loader({
                             }
                         ]
                     });
+
+                    $("#exportButton").on("click", function () {
+                        $.ig.GridExcelExporter.export($("#grid"), {
+                            fileName: "igGrid",
+                            gridFeatureOptions: { "sorting": "applied", "filtering": "applied", paging: "currentPage", "summaries": "applied" },
+                            columnsToSkip: ["ProductID"]
+                        });
+                    });
                 });
             });
-
-            function exportGrid() {
-                $.ig.GridExcelExporter.export($("#grid"), {
-                    fileName: "igGrid",
-                    gridFeatureOptions: { "sorting": "applied", "filtering": "applied", paging: "currentPage", "summaries": "applied" },
-                    columnsToSkip: ["ProductID"]
-                });
-            }
 });
