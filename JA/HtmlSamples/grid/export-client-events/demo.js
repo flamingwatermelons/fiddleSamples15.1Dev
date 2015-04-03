@@ -54,42 +54,43 @@ $.ig.loader({
                        }
                     ]
                 });
+
+                $("#exportButton").on("click", function () {
+                    $.ig.GridExcelExporter.export($("#grid"),
+                        {
+                            fileName: "igGrid",
+                            gridFeatureOptions: { "sorting": "applied", "filtering": "applied", paging: "currentPage", "summaries": "applied" },
+                        },
+                        {
+                            headerCellExported: function (e, args) {
+                                if (args.columnKey == "Quantity") {
+                                    args.xlRow.setCellValue(args.columnIndex, "利用可能な数量");
+                                }
+                            },
+                            cellExporting: function (e, args) {
+                                if (args.columnKey == "Quantity" && args.cellValue > 15) {
+                                    args.xlRow.getCellFormat(args.columnIndex).font().bold(1);
+                                }
+                            },
+                            cellExported: function (e, args) {
+                                if (args.xlRow.index() == 0) {
+                                    return;
+                                }
+
+                                if (args.columnKey == 'VendorWebsite') {
+                                    var xlRow = args.xlRow;
+                                    xlRow.cells(args.columnIndex).applyFormula('=HYPERLINK("' + args.cellValue + '")');
+                                }
+                            },
+                            rowExported: function (e, args) {
+                                if (args.xlRow.index() == args.grid.igGrid("allRows").length - 1) {
+                                    //alert("");
+                                    $('<div style="font-size:20px;">エクスポートが正常に完了しました。ダウンロードを開始しています。</div>').insertBefore('#exportButton').delay(1000).fadeOut();
+                                }
+                            }
+                     });
+
+                });
             });
         });
-		
-		function exportGrid() {
-			$.ig.GridExcelExporter.export($("#grid"),
-				{
-				    fileName: "igGrid",
-				    gridFeatureOptions: { "sorting": "applied", "filtering": "applied", paging: "currentPage", "summaries": "applied" },
-				},
-                {
-                    headerCellExported: function(e, args) {
-                        if (args.columnKey == "Quantity") {
-							args.xlRow.setCellValue(args.columnIndex, "利用可能な数量");
-						}
-					},
-                    cellExporting: function(e, args) {
-                        if (args.columnKey == "Quantity" && args.cellValue > 15) {
-                            args.xlRow.getCellFormat(args.columnIndex).font().bold(1);
-                        }
-                    },
-                    cellExported: function(e, args) {
-                        if (args.xlRow.index() == 0) {
-                            return;
-                        }
-
-                        if (args.columnKey == 'VendorWebsite') {
-                            var xlRow = args.xlRow;
-                            xlRow.cells(args.columnIndex).applyFormula('=HYPERLINK("' + args.cellValue + '")');
-                        }
-                    },
-					rowExported: function (e, args) {
-						if (args.xlRow.index() == args.grid.igGrid("allRows").length - 1) {
-						    //alert("");
-						    $('<div style="font-size:20px;">エクスポートが正常に完了しました。ダウンロードを開始しています。</div>').insertBefore('#exportButton').delay(1000).fadeOut();
-						}
-					}
-                });
-		};
 });
