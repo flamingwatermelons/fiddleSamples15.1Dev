@@ -36,12 +36,12 @@ $.ig.loader({
                         dataSource: data,
                         primaryKey: "ProductID"
                     });
+
+                    $("#exportButton").on("click", function () {
+                        $.ig.GridExcelExporter.export($("#grid"), {
+                            fileName: "igGrid"
+                        });
+                    });
                 });
             });
-
-            function exportGrid() {
-                $.ig.GridExcelExporter.export($("#grid"), {
-                    fileName: "igGrid"
-                });
-            };
 });
