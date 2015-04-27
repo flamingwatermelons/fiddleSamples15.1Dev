@@ -1,19 +1,19 @@
 $(function () {
 $.ig.loader({
-        scriptPath: "http://dev.igniteui.local/15-1/IgniteUI/js/",
-        cssPath: "http://dev.igniteui.local/15-1/IgniteUI/css/",
-        resources: 'modules/infragistics.util.js,' +
-                       'modules/infragistics.documents.core.js,' +
-                       'modules/infragistics.excel.js,' +
-                    'modules/infragistics.gridexcelexporter.js,' +
-                       'igGrid.Hiding,' +
-                       'igGrid.Filtering,' +
-                       'igGrid.Sorting,' +
-                       'igGrid.Paging,' +
-                       'igGrid.Summaries' 
-    });
-            $.ig.loader(function() {
-                $(function() {
+            scriptPath: "http://dev.igniteui.local/15-1/IgniteUI/js/",
+            cssPath: "http://dev.igniteui.local/15-1/IgniteUI/css/",
+            resources: 'modules/infragistics.util.js,' +
+                           'modules/infragistics.documents.core.js,' +
+                           'modules/infragistics.excel.js,' +
+                        'modules/infragistics.gridexcelexporter.js,' +
+                           'igGrid.Hiding,' +
+                           'igGrid.Filtering,' +
+                           'igGrid.Sorting,' +
+                           'igGrid.Paging,' +
+                           'igGrid.Summaries'
+        });
+        $.ig.loader(function () {
+            $(function () {
                 var data = [
                     { 'ProductID': 1, 'Name': 'Omnis ut illum nisi.', 'ProductNumber': 2973311236, "InStock": true, "Quantity": 56, VendorWebsite: 'http://infragistics.com/', },
                     { 'ProductID': 2, 'Name': 'Quis quibusdam qui.', 'ProductNumber': 5907101619, "InStock": false, "Quantity": 0, VendorWebsite: 'http://infragistics.com/', },
@@ -25,7 +25,7 @@ $.ig.loader({
                     { 'ProductID': 31, 'Name': 'Nihil magnam aut ut.', 'ProductNumber': 5652753011, "InStock": true, "Quantity": 41, VendorWebsite: 'http://infragistics.com/' },
                     { 'ProductID': 32, 'Name': 'Repellendus dolorum.', 'ProductNumber': 8807902556, "InStock": true, "Quantity": 10, VendorWebsite: 'http://infragistics.com/' },
                     { 'ProductID': 43, 'Name': 'Odit ut quo minus.', 'ProductNumber': 1083007847, "InStock": false, "Quantity": 0, VendorWebsite: 'http://infragistics.com/' }
-                    ];
+                ];
 
                 $("#grid").igGrid({
                     autoGenerateColumns: false,
@@ -38,7 +38,7 @@ $.ig.loader({
                         { headerText: "仕入先の web サイト", key: "VendorWebsite", width: "220px", template: '<a href="${VendorWebsite}">${VendorWebsite}</a>' }
                     ],
                     dataSource: data,
-                        width: "100%",
+                    width: "100%",
                     primaryKey: "ProductID",
                     features: [
                        {
@@ -56,7 +56,7 @@ $.ig.loader({
                 });
 
                 $("#exportButton").on("click", function () {
-                    $.ig.GridExcelExporter.export($("#grid"),
+                    $.ig.GridExcelExporter.exportGrid($("#grid"),
                         {
                             fileName: "igGrid",
                             gridFeatureOptions: { "sorting": "applied", "filtering": "applied", paging: "currentPage", "summaries": "applied" },
@@ -84,11 +84,10 @@ $.ig.loader({
                             },
                             rowExported: function (e, args) {
                                 if (args.xlRow.index() == args.grid.igGrid("allRows").length - 1) {
-                                    //alert("");
                                     $('<div style="font-size:20px;">エクスポートが正常に完了しました。ダウンロードを開始しています。</div>').insertBefore('#exportButton').delay(1000).fadeOut();
                                 }
                             }
-                     });
+                        });
 
                 });
             });
