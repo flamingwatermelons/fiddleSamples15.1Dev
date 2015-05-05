@@ -3,14 +3,15 @@ $.ig.loader({
             scriptPath: "http://dev.igniteui.local/15-1/IgniteUI/js/",
             cssPath: "http://dev.igniteui.local/15-1/IgniteUI/css/",
             resources: 'modules/infragistics.util.js,' +
-                           'modules/infragistics.documents.core.js,' +
-                           'modules/infragistics.excel.js,' +
-                        'modules/infragistics.gridexcelexporter.js,' +
+                           'modules/infragistics.ui.grid.framework.js,' +
                            'igGrid.Hiding,' +
                            'igGrid.Filtering,' +
                            'igGrid.Sorting,' +
                            'igGrid.Paging,' +
-                           'igGrid.Summaries'
+                           'igGrid.Summaries' +
+                           'modules/infragistics.documents.core.js,' +
+                           'modules/infragistics.excel.js,' +
+                           'modules/infragistics.gridexcelexporter.js'
         });
         $.ig.loader(function () {
             $(function () {
