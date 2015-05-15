@@ -2,11 +2,10 @@ $(function () {
 $.ig.loader({
             scriptPath: "http://dev.igniteui.local/15-1/IgniteUI/js/",
             cssPath: "http://dev.igniteui.local/15-1/IgniteUI/css/",
-            resources: 'modules/infragistics.util.js,' +
-                'igGrid,' +
+            resources:'igGrid,' +
                 'modules/infragistics.documents.core.js,' +
                 'modules/infragistics.excel.js,' +
-                'modules/infragistics.gridexcelexporter.js,' 
+                'modules/infragistics.gridexcelexporter.js' 
         });
 
         $.ig.loader(function () {
