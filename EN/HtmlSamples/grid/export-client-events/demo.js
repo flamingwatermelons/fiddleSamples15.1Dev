@@ -30,12 +30,12 @@ $.ig.loader({
                 $("#grid").igGrid({
                     autoGenerateColumns: false,
                     columns: [
-                        { headerText: "Product ID", key: "ProductID", dataType: "number", width: "100px" },
-                        { headerText: "Product Name", key: "Name", dataType: "string", width: "250px" },
-                        { headerText: "Product Number", key: "ProductNumber", dataType: "number", width: "200px" },
-                        { headerText: "In Stock", key: "InStock", dataType: "bool", width: "150px" },
-                        { headerText: "Quantity", key: "Quantity", dataType: "number", width: "150px" },
-                        { headerText: "Vendor website", key: "VendorWebsite", width: "220px", template: '<a href="${VendorWebsite}">${VendorWebsite}</a>' }
+                        { headerText: "$$(ProductID)", key: "ProductID", dataType: "number", width: "100px" },
+                        { headerText: "$$(Name)", key: "Name", dataType: "string", width: "250px" },
+                        { headerText: "$$(ProductNumber)", key: "ProductNumber", dataType: "number", width: "200px" },
+                        { headerText: "$$(InStock)", key: "InStock", dataType: "bool", width: "150px" },
+                        { headerText: "$$(Quantity)", key: "Quantity", dataType: "number", width: "150px" },
+                        { headerText: "$$(Vendorwebsite)", key: "VendorWebsite", width: "220px", template: '<a href="${VendorWebsite}">${VendorWebsite}</a>' }
                     ],
                     dataSource: data,
                     width: "100%",
@@ -64,7 +64,7 @@ $.ig.loader({
                         {
                             headerCellExported: function (e, args) {
                                 if (args.columnKey == "Quantity") {
-                                    args.xlRow.setCellValue(args.columnIndex, "Available Quantity");
+                                    args.xlRow.setCellValue(args.columnIndex, "$$(AvailableQuantity)");
                                 }
                             },
                             cellExporting: function (e, args) {
@@ -84,7 +84,7 @@ $.ig.loader({
                             },
                             rowExported: function (e, args) {
                                 if (args.xlRow.index() == args.grid.igGrid("allRows").length - 1) {
-                                    $('<div style="font-size:20px;">Last row exported, download starts!!</div>').insertBefore('#exportButton').delay(1000).fadeOut();
+                                    $('<div style="font-size:20px;">$$(LastRowExported)</div>').insertBefore('#exportButton').delay(1000).fadeOut();
                                 }
                             }
                         });
