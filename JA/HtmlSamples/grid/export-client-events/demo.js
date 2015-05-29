@@ -30,12 +30,12 @@ $.ig.loader({
                 $("#grid").igGrid({
                     autoGenerateColumns: false,
                     columns: [
-                        { headerText: "製品 ID", key: "ProductID", dataType: "number", width: "100px" },
-                        { headerText: "製品名", key: "Name", dataType: "string", width: "250px" },
-                        { headerText: "製品番号", key: "ProductNumber", dataType: "number", width: "200px" },
-                        { headerText: "在庫", key: "InStock", dataType: "bool", width: "150px" },
-                        { headerText: "数量", key: "Quantity", dataType: "number", width: "150px" },
-                        { headerText: "仕入先の web サイト", key: "VendorWebsite", width: "220px", template: '<a href="${VendorWebsite}">${VendorWebsite}</a>' }
+                        { headerText: "$$(ProductID)", key: "ProductID", dataType: "number", width: "100px" },
+                        { headerText: "$$(Name)", key: "Name", dataType: "string", width: "250px" },
+                        { headerText: "$$(ProductNumber)", key: "ProductNumber", dataType: "number", width: "200px" },
+                        { headerText: "$$(InStock)", key: "InStock", dataType: "bool", width: "150px" },
+                        { headerText: "$$(Quantity)", key: "Quantity", dataType: "number", width: "150px" },
+                        { headerText: "$$(Vendorwebsite)", key: "VendorWebsite", width: "220px", template: '<a href="${VendorWebsite}">${VendorWebsite}</a>' }
                     ],
                     dataSource: data,
                     width: "100%",
@@ -64,7 +64,7 @@ $.ig.loader({
                         {
                             headerCellExported: function (e, args) {
                                 if (args.columnKey == "Quantity") {
-                                    args.xlRow.setCellValue(args.columnIndex, "利用可能な数量");
+                                    args.xlRow.setCellValue(args.columnIndex, "$$(AvailableQuantity)");
                                 }
                             },
                             cellExporting: function (e, args) {
@@ -84,7 +84,7 @@ $.ig.loader({
                             },
                             rowExported: function (e, args) {
                                 if (args.xlRow.index() == args.grid.igGrid("allRows").length - 1) {
-                                    $('<div style="font-size:20px;">エクスポートが正常に完了しました。ダウンロードを開始しています。</div>').insertBefore('#exportButton').delay(1000).fadeOut();
+                                    $('<div style="font-size:20px;">$$(LastRowExported)</div>').insertBefore('#exportButton').delay(1000).fadeOut();
                                 }
                             }
                         });
