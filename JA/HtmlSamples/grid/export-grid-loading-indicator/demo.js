@@ -58,7 +58,7 @@ $.ig.loader({
             $('#exportButton').on('click', function () {
                 var gridExcelExporter = new $.ig.GridExcelExporter();
                 var $grid = $('#grid');
-                gridExcelExporter.exportGrid($grid, {
+                gridExcelExporter.export($grid, {
                     gridStyling: "applied",
                 }, {
                     exportStarting: function (e, args) {
