@@ -64,7 +64,7 @@ $.ig.loader({
                 });
 
                 $("#exportButton").on("click", function () {
-                    $.ig.GridExcelExporter.exportGrid($("#grid"), {
+                    $.ig.GridExcelExporter.export($("#grid"), {
                         fileName: "igGrid",
                         gridFeatureOptions: { "sorting": "applied", "filtering": "applied", paging: "currentPage", "summaries": "applied" },
                         columnsToSkip: ["ProductID"]
