@@ -37,7 +37,7 @@ $.ig.loader({
                 });
 
                 $("#exportButton").on("click", function () {
-                    $.ig.GridExcelExporter.exportGrid($("#grid"), {
+                    $.ig.GridExcelExporter.export($("#grid"), {
                         fileName: "igGrid"
                     });
                 });
